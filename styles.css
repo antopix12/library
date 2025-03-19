@@ -52,4 +52,15 @@ html {
   border-radius: 2%;
   border-color: black;
   border: 2px solid black;
+  padding-left: 20px;
+}
+
+.deleteButton {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  border-radius: 10px;
+  background-color: rgb(241, 180, 180);
+  width: 100px;
+  height: 20px;
 }

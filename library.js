@@ -34,7 +34,7 @@ function addBookToLibrary(book) {
 let dune = new Book("Dune", "Frank Herbert", 896, true);
 addBookToLibrary(dune);
 
-let dune2 = new Book("Dune Messiah", "Frank Herbet", 288, true);
+let dune2 = new Book("Dune Messiah", "Frank Herbert", 288, true);
 addBookToLibrary(dune2);
 
 let container = document.querySelector(".container");
@@ -45,14 +45,19 @@ function displayBooks () {
     let newCard = document.createElement("div");
     newCard.classList.add("card");
 
+    let deleteButton = document.createElement("div");
+    deleteButton.classList.add("deleteButton");
+    deleteButton.textContent = "Delete";
+
     newCard.innerHTML = `
     <h3>${myLibrary[i].title}</h3>
-      <p>Author: ${myLibrary[i].author}</p>
-      <p>Pages: ${myLibrary[i].pages}</p>
-      <p>Read: ${myLibrary[i].read ? "Yes" : "No"}</p>
+      <p><b>Author</b>: ${myLibrary[i].author}</p>
+      <p><b>Pages</b>: ${myLibrary[i].pages}</p>
+      <p><b>Read</b>: ${myLibrary[i].read ? "Yes" : "No"}</p>
     `;
 
     container.appendChild(newCard);
+    newCard.appendChild(deleteButton);
   }
 }
 
@@ -73,4 +78,4 @@ addBookBtn.addEventListener("click", function(event) {
   displayBooks();
 })
 
-window.onload(displayBooks());
+displayBooks();
