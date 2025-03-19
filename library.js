@@ -37,23 +37,29 @@ addBookToLibrary(dune);
 let dune2 = new Book("Dune Messiah", "Frank Herbet", 288, true);
 addBookToLibrary(dune2);
 
+let container = document.querySelector(".container");
+let addBookBtn = document.querySelector("#addBookBtn");
 
 function displayBooks () {
   for (let i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i]);
+    let newCard = document.createElement("div");
+    newCard.classList.add("card");
+
+    newCard.innerHTML = `
+    <h3>${myLibrary[i].title}</h3>
+      <p>Author: ${myLibrary[i].author}</p>
+      <p>Pages: ${myLibrary[i].pages}</p>
+      <p>Read: ${myLibrary[i].read ? "Yes" : "No"}</p>
+    `;
+
+    container.appendChild(newCard);
   }
 }
-
-let container = document.querySelector(".container");
-let addBookBtn = document.querySelector("#addBookBtn");
 
 addBookBtn.addEventListener("click", function() {
   let newCard = document.createElement("div");
   newCard.classList.add("card");
-  newCard.style.backgroundColor = "lightblue";
-  newCard.style.width = "100px";
-  newCard.style.height = "100px";
-
   container.appendChild(newCard);
 })
 
+displayBooks();

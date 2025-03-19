@@ -3,4 +3,20 @@ html {
   font-family: sans-serif;
   height: 100%;
   margin: 0;
+  background-color: blanchedalmond;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  width: 300px;
+  height: 500px;
+  border-radius: 2%;
+  border-color: black;
+  border: 2px solid black;
 }
