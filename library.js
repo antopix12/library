@@ -31,23 +31,32 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-// let dune = new Book("Dune", "Frank Herbert", 896, true);
-// addBookToLibrary(dune);
+let dune = new Book("Dune", "Frank Herbert", 896, true);
+addBookToLibrary(dune);
 
-// let dune2 = new Book("Dune Messiah", "Frank Herbert", 288, true);
-// addBookToLibrary(dune2);
+let dune2 = new Book("Dune Messiah", "Frank Herbert", 288, true);
+addBookToLibrary(dune2);
 
 let container = document.querySelector(".container");
 let addBookBtn = document.querySelector("#addBookBtn");
 
 function displayBooks () {
+  container.innerHTML = "";
+
   for (let i = 0; i < myLibrary.length; i++) {
+    // Clear the container before displaying the updated list
     let newCard = document.createElement("div");
     newCard.classList.add("card");
 
-    let deleteButton = document.createElement("div");
+    // Loop through the books in myLibrary and create cards
+    let deleteButton = document.createElement("button");
     deleteButton.classList.add("deleteButton");
     deleteButton.textContent = "Delete";
+
+    // Create the "Toggle Read" button
+    let toggleReadButton = document.createElement("button");
+    toggleReadButton.classList.add("toggleReadButton");
+    toggleReadButton.textContent = myLibrary[i].read ? "Mark as Unread" : "Mark as Read";
 
     newCard.innerHTML = `
     <h3>${myLibrary[i].title}</h3>
@@ -56,12 +65,25 @@ function displayBooks () {
       <p><b>Read</b>: ${myLibrary[i].read ? "Yes" : "No"}</p>
     `;
 
+    // Append the new card and buttons to the container
     container.appendChild(newCard);
     newCard.appendChild(deleteButton);
+    newCard.appendChild(toggleReadButton);
 
     deleteButton.addEventListener("click", function() {
       myLibrary.splice(i, 1);
       container.removeChild(newCard);
+    });
+
+    toggleReadButton.addEventListener("click", function() {
+      // Toggle the read status of the book
+      myLibrary[i].read = !myLibrary[i].read;
+
+      // Update the "Read" text in the card
+      newCard.querySelector("p:nth-child(4)").innerHTML = `<b>Read:</b> ${myLibrary[i].read ? "Yes" : "No"}`;
+
+      // Update the "Toggle Read" button text
+      toggleReadButton.textContent = myLibrary[i].read ? "Mark as Unread" : "Mark as Read";
     });
   }
 }
