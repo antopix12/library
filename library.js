@@ -36,3 +36,10 @@ addBookToLibrary(dune);
 
 let dune2 = new Book("Dune Messiah", "Frank Herbet", 288, true);
 addBookToLibrary(dune2);
+
+
+function displayBooks () {
+  for (let i = 0; i < myLibrary.length; i++) {
+    console.log(myLibrary[i]);
+  }
+}
