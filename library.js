@@ -31,11 +31,11 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-let dune = new Book("Dune", "Frank Herbert", 896, true);
-addBookToLibrary(dune);
+// let dune = new Book("Dune", "Frank Herbert", 896, true);
+// addBookToLibrary(dune);
 
-let dune2 = new Book("Dune Messiah", "Frank Herbert", 288, true);
-addBookToLibrary(dune2);
+// let dune2 = new Book("Dune Messiah", "Frank Herbert", 288, true);
+// addBookToLibrary(dune2);
 
 let container = document.querySelector(".container");
 let addBookBtn = document.querySelector("#addBookBtn");
@@ -58,6 +58,11 @@ function displayBooks () {
 
     container.appendChild(newCard);
     newCard.appendChild(deleteButton);
+
+    deleteButton.addEventListener("click", function() {
+      myLibrary.splice(i, 1);
+      container.removeChild(newCard);
+    });
   }
 }
 
