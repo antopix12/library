@@ -73,6 +73,7 @@ function displayBooks () {
     deleteButton.addEventListener("click", function() {
       myLibrary.splice(i, 1);
       container.removeChild(newCard);
+      displayBooks();
     });
 
     toggleReadButton.addEventListener("click", function() {
