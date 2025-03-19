@@ -43,3 +43,17 @@ function displayBooks () {
     console.log(myLibrary[i]);
   }
 }
+
+let container = document.querySelector(".container");
+let addBookBtn = document.querySelector("#addBookBtn");
+
+addBookBtn.addEventListener("click", function() {
+  let newCard = document.createElement("div");
+  newCard.classList.add("card");
+  newCard.style.backgroundColor = "lightblue";
+  newCard.style.width = "100px";
+  newCard.style.height = "100px";
+
+  container.appendChild(newCard);
+})
+
