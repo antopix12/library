@@ -56,10 +56,21 @@ function displayBooks () {
   }
 }
 
-addBookBtn.addEventListener("click", function() {
-  let newCard = document.createElement("div");
-  newCard.classList.add("card");
-  container.appendChild(newCard);
+addBookBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  let title = document.querySelector("#title").value;
+  let author = document.querySelector("#author").value;
+  let pages = document.querySelector("#pages").value;
+  let read = document.querySelector("#read").checked;
+
+  let newBook = new Book(title, author, parseInt(pages), read);
+  addBookToLibrary(newBook);
+
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+  displayBooks();
 })
 
-displayBooks();
+window.onload(displayBooks());
